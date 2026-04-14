@@ -14,18 +14,20 @@ def main():
     kk_rct.center = 300, 200  # 練習10：こうかとんの初期座標の設定
     tmr = 0
     while True:
+        xp=0
+        yp=0
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()  # 練習10：キー取得
-        kk_rct.move_ip(-1,0)
         if key_lst[pg.K_UP]:  # 上
-            kk_rct.move_ip(0, -1)
+            yp=-1
         if key_lst[pg.K_DOWN]:  # 下
-            kk_rct.move_ip(0, 1)
+            yp=1
         if key_lst[pg.K_LEFT]:  # 左
-            kk_rct.move_ip(-1, 0)
+            xp=-1
         if key_lst[pg.K_RIGHT]:  # 右
-            kk_rct.move_ip(+2, 0)
+            xp=2
+        kk_rct.move_ip(-1+xp,yp)
         x = tmr%3200  # 練習5
         screen.blit(bg_img, [-x, 0])  # 練習2
         screen.blit(bg_img2, [-x+1600, 0])  # 練習7
